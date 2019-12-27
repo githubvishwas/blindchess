@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
               integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -30,12 +31,13 @@
 		<link rel="stylesheet" href="style.css">
 		
 		<script src="lib/chessboardjs/js/chess.js"></script>
-		<script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
+        <script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
     </head>
 
     <body>
-
-
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" style="height: max-content;color: aliceblue;"><h2><img src="./img/blind.png" height="60" width="60" style="align-self: center;">&nbsp;&nbsp;&nbsp;BlindChess</h2></a>
+        </nav>
     <div class="container">
         <div class="row" >
 
@@ -58,7 +60,7 @@
 
                             <!--button type="button" class="btn btn-default" id="backBtn" onclick="takeBack()";>Take Back</button-->
                             <!--button type="button" class="btn btn-default" id="reset" onclick="newGame()";>New Game</button-->
-                            <button type="button" class="btn btn-default" id="toggle" onclick="toggleBoard()";>Show Board</button>
+                          
                             <select class="form-control" id="col1" onchange="changeBoard.call(this, event)">
                                 <option value="white">Play as White</option>
                                 <option value="black">Play as Black</option>
@@ -68,7 +70,8 @@
 
 							<input type="text" id="move" move="move" required
 								   minlength="2" maxlength="5" size="10">
-								   <button type="button" class="btn btn-default" id="submit" onclick="MakeMove()";>Submit</button>
+                                   <button type="button" class="btn btn-default" id="submit" onclick="MakeMove()";>Submit</button><br><br>
+                                   <label>Difficulty: </label>
                             <select class="form-control" id="sel1">
                                 <option value="1">Level: 1</option>
                                 <option value="2">Level: 2</option>
@@ -76,13 +79,15 @@
                                 <option value="4">Level: 4</option>
                                 <option value="5">Level: 5</option>
                             </select>
-                        </form>
+                        </form><br>
+                        <a target="blank" href="https://blog.chesshouse.com/how-to-read-and-write-algebraic-chess-notation/">Click here to learn about the chess notation</a>
+                        <br>
                     </div>
-
                 </div>
 
             </div>
             <p><span id="pgn5"></span></p>
+            <center><button type="button" class="btn btn-default" id="toggle" onclick="toggleBoard()";>Show Board</button>
             <div class="col-xs-12 col-sm-6" style="position:relative;display: inline-block">
                 <div id="mainWindow">
                     <div id="piecesB"></div>
@@ -90,6 +95,7 @@
                     <div id="piecesW"></div>
                 </div>
             </div>
+        </center>
         </div>
     </div>
 
@@ -129,11 +135,12 @@
 
             if (x.innerHTML === "Show Board") {
                 x.innerHTML = "Hide Board";
-				var b = document.getElementById("board");
+                var b = document.getElementById("board");
+                b.classList.add('animated', 'fadeIn')
 				b.style.display = "block"
             } else {
                 x.innerHTML = "Show Board";
-				var b = document.getElementById("board");
+                var b = document.getElementById("board");
 				b.style.display = "none"
 
             }
