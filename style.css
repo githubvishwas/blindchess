@@ -1,11 +1,11 @@
 #board {
     padding: 10px;
     max-width: 500px;
-    min-width: 300px;
+    min-width: 410px;
 }
 
 .navbar {
-    background-color: red;
+    background-color: black;
 }
 
 #logo {
